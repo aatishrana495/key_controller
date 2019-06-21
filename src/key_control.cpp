@@ -13,7 +13,7 @@ KeyControl::KeyControl(ros::NodeHandle _nh, QWidget *parent) : QWidget(parent) {
   for (int i = 0; i < 6; i++) {
     spMsg.setpoints.push_back(0);
   }
-  spMsg.setpoints[2] = 0; // heave
+  spMsg.setpoints[2] = 935; // heave
   publish_sp();
 }
 
@@ -56,22 +56,22 @@ void KeyControl::keyPressEvent(QKeyEvent *event) {
   // heave adjustmnet
   if (event->key() == Qt::Key_Z) {
 
-    if (spMsg.setpoints[2] > 0.8) {
-      spMsg.setpoints[2] = 0.8;
-    } else if (spMsg.setpoints[2] < 0) {
-      spMsg.setpoints[2] = 0;
+    if (spMsg.setpoints[2] > 1180) {
+      spMsg.setpoints[2] = 1180;
+    } else if (spMsg.setpoints[2] < 950) {
+      spMsg.setpoints[2] = 950;
     } else {
-      spMsg.setpoints[2] += 0.1;
+      spMsg.setpoints[2] += 10;
     }
   }
   if (event->key() == Qt::Key_Space) {
 
-    if (spMsg.setpoints[2] > 0.8) {
-      spMsg.setpoints[2] = 0.8;
-    } else if (spMsg.setpoints[2] < 0) {
-      spMsg.setpoints[2] = 0;
+    if (spMsg.setpoints[2] > 1180) {
+      spMsg.setpoints[2] = 1180;
+    } else if (spMsg.setpoints[2] < 950) {
+      spMsg.setpoints[2] = 950;
     } else {
-      spMsg.setpoints[2] -= 0.1;
+      spMsg.setpoints[2] -= 10;
     }
   }
 
